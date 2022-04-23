@@ -3,7 +3,7 @@ const apiRoutes = require("./routes/apiRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
 
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 //give access to database file
 
 const app = express();

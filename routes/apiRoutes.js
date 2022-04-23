@@ -50,11 +50,13 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            note_id: uuid(),
+            id: uuid(),
         };
+        //pushes into newNote array
+        notes.push(newNote)
 
         //convert the data to a string so it can be saved
-        const noteString = JSON.stringify(noteString, newNote);
+        const noteString = JSON.stringify(notes);
 
         //Write the new notes file to the server with original notes and new note
         fs.writeFile(`./db/db.json`, noteString, (err) =>
@@ -69,7 +71,7 @@ app.post('/api/notes', (req, res) => {
             body: newNote,
         };
         console.log(response);
-        res.json(response);
+        res.json(notes);
     } else {
         res.json('Error in creating new note');
     }
