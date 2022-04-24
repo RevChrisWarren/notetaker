@@ -9,9 +9,7 @@ const uuid = require('../helpers/uuid');
 app.get('/api/notes', (req, res) => {
     // read db.json file to get notes already in file
   let noteString =  fs.readFileSync(`./db/db.json`)
-//   , noteString, (err) =>
-//         err
-//             ? console.error(err)
+
             notes = JSON.parse(noteString) || [];
     
 
@@ -76,5 +74,17 @@ app.post('/api/notes', (req, res) => {
         res.json('Error in creating new note');
     }
 });
+
+//Delete a note
+app.delete('/api/notes/:id', (req, res) => {
+    notes.splice(req.params.id);
+    fs.writeFile(`./db/db.json`, JSON.stringify(notes, '\t'), (err) =>
+    err
+        ? console.error(err)
+        : console.log(
+            `Note with id: ${req.params.id} has been deleted.`
+        )
+);
+    });
 
 module.exports = app;
