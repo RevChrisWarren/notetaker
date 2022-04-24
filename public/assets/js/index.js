@@ -146,11 +146,9 @@ const renderNoteList = async (notes) => {
         'text-danger',
         'delete-note'
       );
-      delBtnEl.addEventListener('click', handleNoteDelete);
-
+      delBtnEl.addEventListener('click', handleNoteDelete)
       liEl.append(delBtnEl);
     }
-
     return liEl;
   };
 

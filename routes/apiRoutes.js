@@ -8,10 +8,10 @@ const uuid = require('../helpers/uuid');
 //GET request for notes
 app.get('/api/notes', (req, res) => {
     // read db.json file to get notes already in file
-  let noteString =  fs.readFileSync(`./db/db.json`)
+    let noteString = fs.readFileSync(`./db/db.json`)
 
-            notes = JSON.parse(noteString) || [];
-    
+    notes = JSON.parse(noteString) || [];
+
 
     //Log that request to the terminal
     console.info(`${req.method} request received to get notes`);
@@ -75,17 +75,20 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
-
-
 //Delete a note
 app.delete('/api/notes/:id', (req, res) => {
+    const index = notes.findIndex(note => note.id === req.params.id);
+    console.log('index: ', index);
+    if (index > -1) {
+        notes.splice(index, 1);
+    }
     fs.writeFile(`./db/db.json`, JSON.stringify(notes, '\t'), (err) =>
-    err
-        ? console.error(err)
-        : console.log(
-            `Note with id: ${req.params.id} has been deleted.`
-        )
-);
-    });
+        err
+            ? console.error(err)
+            : console.log(
+                `Note with id: ${req.params.id} has been deleted.`
+            )
+    );
+});
 
 module.exports = app;
