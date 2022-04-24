@@ -75,9 +75,10 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
+
+
 //Delete a note
 app.delete('/api/notes/:id', (req, res) => {
-    notes.splice(req.params.id);
     fs.writeFile(`./db/db.json`, JSON.stringify(notes, '\t'), (err) =>
     err
         ? console.error(err)
