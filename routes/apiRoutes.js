@@ -82,13 +82,11 @@ app.delete('/api/notes/:id', (req, res) => {
     if (index > -1) {
         notes.splice(index, 1);
     }
-    fs.writeFile(`./db/db.json`, JSON.stringify(notes, '\t'), (err) =>
+    fs.writeFile(`./db/db.json`, JSON.stringify(notes, '\t'), (err) => {
         err
             ? console.error(err)
-            : console.log(
-                `Note with id: ${req.params.id} has been deleted.`
-            )
-    );
+            : res.send(`Note with id: ${req.params.id} has been deleted.`)
+    });
 });
 
 module.exports = app;

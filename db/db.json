@@ -1,1 +1,1 @@
-[]
+[{"title":"Note For Express","text":"Express is an easier way of creating a server than creating one with Node alone","id":"c021"},{"title":"Note for app.delete","text":"When using app.delete, the front side will not respond to delete the note you created until it receives a response from the backend.\n","id":"1bc4"}]
