@@ -1,6 +1,6 @@
 # notetaker app
 
-![Screenshot of application](/notetaker.png)
+![Screenshot of application](notetaker.png)
 
 ## This is an app created to take and save notes on the server for memos, reminders, etc.
 
